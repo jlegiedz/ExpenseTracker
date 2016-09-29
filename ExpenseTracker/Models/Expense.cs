@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 
 namespace ExpenseTracker.Models
@@ -6,6 +7,7 @@ namespace ExpenseTracker.Models
     public class Expense
     {
         public int Id { get; set; }
+        [Required]
         public decimal Amount { get; set; }
         public Category Category { get; set; }
         public DateTime Date { get; set; }

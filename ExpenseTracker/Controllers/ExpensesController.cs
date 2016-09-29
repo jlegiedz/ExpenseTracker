@@ -11,9 +11,16 @@ namespace ExpenseTracker.Controllers
         private ExpenseDBContext db = new ExpenseDBContext();
 
         // GET: Expenses
-        public ActionResult Index()
+        public ActionResult Index(string searchString)      // adding a search
         {
-            return View(db.Expenses.ToList());
+            var expenses = from e in db.Expenses
+                           select e;
+            
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                expenses = expenses.Where(e => e.Category.ToString().Contains(searchString));
+            }
+            return View(expenses);
         }
 
         // GET: Expenses/Details/5
