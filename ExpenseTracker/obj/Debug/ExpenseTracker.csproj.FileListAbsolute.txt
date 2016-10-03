@@ -55,3 +55,5 @@ c:\users\joann\documents\visual studio 2015\Projects\ExpenseTracker\ExpenseTrack
 c:\users\joann\documents\visual studio 2015\Projects\ExpenseTracker\ExpenseTracker\bin\EntityFramework.SqlServer.dll
 c:\users\joann\documents\visual studio 2015\Projects\ExpenseTracker\ExpenseTracker\bin\EntityFramework.xml
 c:\users\joann\documents\visual studio 2015\Projects\ExpenseTracker\ExpenseTracker\bin\EntityFramework.SqlServer.xml
+C:\Users\joann\documents\visual studio 2015\Projects\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.Migrations.DataAnnotations.resources
+C:\Users\joann\documents\visual studio 2015\Projects\ExpenseTracker\ExpenseTracker\obj\Debug\ExpenseTracker.csproj.GenerateResource.Cache
