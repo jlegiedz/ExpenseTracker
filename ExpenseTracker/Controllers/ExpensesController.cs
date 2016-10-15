@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using ExpenseTracker.Models;
+using System;
 
 namespace ExpenseTracker.Controllers
 {
@@ -11,16 +12,42 @@ namespace ExpenseTracker.Controllers
         private ExpenseDBContext db = new ExpenseDBContext();
 
         // GET: Expenses
-        public ActionResult Index(string searchString)      // adding a search
+        public ActionResult Index(string sortOrder, string searchString)      // adding a search
         {
+            ViewBag.AmountSortParm = string.IsNullOrEmpty(sortOrder) ? "Amount_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "Date_desc" : "Date";
+           
+
             var expenses = from e in db.Expenses
                            select e;
+
             
             if (!string.IsNullOrEmpty(searchString))
             {
                 expenses = expenses.Where(e => e.Category.ToString().Contains(searchString));
+        
             }
-            return View(expenses);
+
+
+           switch (sortOrder)
+            {
+                case "Amount_desc":
+                    expenses = expenses.OrderByDescending(e => e.Amount);
+                    break;
+                case "Date":
+                    expenses = expenses.OrderBy(e => e.Date);
+                    break;
+                case "Date_desc":
+                    expenses = expenses.OrderByDescending(e => e.Date);
+                    break;
+                default:
+                   expenses = expenses.OrderBy(e => e.Amount);
+                    break;
+            }
+
+            return View(expenses.ToList());
+            
+
         }
 
         // GET: Expenses/Details/5
